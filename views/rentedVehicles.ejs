@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Wheels - Account Details</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="icon" href="/img/tab_logo.png" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/accountDetails.css" />
+    <link rel="stylesheet" href="/css/rentDetails.css" />
+
+    <style>
+      .rating {
+        display: inline-block;
+        direction: rtl;
+        font-size: 24px;
+      }
+
+      .rating input {
+        display: none;
+      }
+
+      .rating label {
+        color: #ccc;
+        cursor: pointer;
+      }
+
+      .rating input:checked ~ label,
+      .rating label:hover,
+      .rating label:hover ~ label {
+        color: #ffd700; /* Gold color */
+      }
+
+      .stars {
+        font-size: 24px;
+        color: #ffd700; /* Gold color for filled stars */
+      }
+
+      .stars .empty-star {
+        color: #ccc; /* Color for empty stars */
+      }
+    </style>
+  </head>
+  <body>
+    <header style="background-color: black">
+      <nav>
+        <div class="logoMenu"></div>
+        <div class="menu">
+          <a href="/">Home</a>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
+          <a href="/reviews">Reviews</a>
+        </div>
+
+        <div class="social">
+          <a href="/notification" class="tooltip">
+            <i class="fa-solid fa-bell">
+              <span class="tooltiptext">Notifications</span>
+            </i>
+          </a>
+          <a href="/login" class="tooltip">
+            <i class="fa-solid fa-user">
+              <span class="tooltiptext">Login</span>
+            </i>
+          </a>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="outerDiv">
+        <div class="sideMenu">
+          <h3>General</h3>
+          <div class="option">
+            <i class="fa-solid fa-user"></i>
+            <a href="/accountDetails">Account Details</a>
+          </div>
+          <div class="option">
+            <i class="fa-solid fa-pen"></i>
+            <a href="/updateDetails">Update Details</a>
+          </div>
+          <form action="/logout" method="GET">
+            <button type="submit" class="logout">Logout</button>
+          </form>
+        </div>
+        <div class="details">
+          <a href="/accountDetails">Go back</a>
+          <h1>Rented Vehicles of <%= user.username %></h1>
+          <p>See your rented vehicles details here</p>
+          <hr />
+          <br />
+          <ul>
+            <% userVehicles.forEach(vehicle => { %>
+            <li>
+              <strong>Car: <%= vehicle.make %> <%= vehicle.model %></strong>
+              <span>Phone: <%= vehicle.phone %></span><br />
+              <span>Email: <%= vehicle.email %></span><br />
+              <span>Pickup Location: <%= vehicle.pickupLocation %></span><br />
+              <span>Dropoff Location: <%= vehicle.dropoffLocation %></span
+              ><br />
+              <span>Pickup Date: <%= vehicle.pickupDate %></span><br />
+              <span>Dropoff Date: <%= vehicle.dropoffDate %></span><br />
+              <span>Your Address: <%= vehicle.yourAddress %></span><br />
+              <br />
+              <% if(vehicle.inTrip){ %>
+              <!-- <p>In Trip</p> -->
+              <% } %> <% if (vehicle.rating) { %>
+              <p>Trip is completed</p>
+              <p>Your Rating</p>
+              <div class="stars">
+                <% for (let i = 1; i <= 5; i++) { %>
+                <span
+                  class="<%= i <= vehicle.rating ? 'filled-star' : 'empty-star' %>"
+                  >&#9733;</span
+                >
+                <% } %>
+              </div>
+              <% } else if (vehicle.canRate) { %>
+              <p>Trip is completed</p>
+              <form action="/rate-vehicle/<%= vehicle.carId %>" method="POST">
+                <label for="rating">Rate your rental:</label>
+                <div class="rating">
+                  <% [5, 4, 3, 2, 1].forEach(rating => { %> <input type="radio"
+                  name="rating" value="<%= rating %>" id="rating_<%=
+                  vehicle.carId %>_<%= rating %>" <%= rating === 5 ? 'checked' :
+                  '' %> />
+                  <label for="rating_<%= vehicle.carId %>_<%= rating %>"
+                    >&#9733;</label
+                  >
+                  <% }); %>
+                </div>
+                <input
+                  type="hidden"
+                  name="username"
+                  value="<%= user.username %>"
+                />
+                <button type="submit">Submit Rating</button>
+              </form>
+              <% } else { %>
+              <p>Rating will be available after the dropoff date.</p>
+              <% } %>
+
+              <!-- Cancel Booking Form -->
+              <form action="/cancel-booking/<%= vehicle.carId %>" method="POST">
+                <input
+                  type="hidden"
+                  name="username"
+                  value="<%= user.username %>"
+                />
+                <input type="hidden" name="email" value="<%=vehicle.email %>"></p>
+
+                <button
+                  style="background-color: red"
+                  class="cancel-booking"
+                  type="submit"
+                >
+                  Cancel Booking
+                </button>
+              </form>
+            </li>
+            <% }); %>
+          </ul>
+        </div>
+      </div>
+    </main>
+    <script src="/js/script.js"></script>
+  </body>
+</html>

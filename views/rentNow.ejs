@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Car Rental Form</title>
+    <link rel="stylesheet" href="/css/rentNow.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Car Rental Form</h2>
+      <form
+        action="/submit-rent-details"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <input type="hidden" name="carId" value="<%= carId %>" />
+        <div>
+          <label for="name">Full Name:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Enter name"
+            required
+          />
+        </div>
+        <br />
+        <div>
+          <label for="make">Make of the Car :</label>
+          <input
+            type="text"
+            name="make"
+            placeholder="Make of the car"
+            id="make"
+          />
+        </div>
+        <br />
+        <div>
+          <label for="model">Model of the Car :</label>
+          <input
+            type="text"
+            name="model"
+            placeholder="Model of the car"
+            id="model"
+          />
+        </div>
+        <br />
+        <div>
+          <label for="phoneNumber">Phone Number:</label>
+          <input
+            type="text"
+            id="phoneNumber"
+            name="phoneNumber"
+            pattern="\d{10}"
+            placeholder="Enter phone number"
+            title="Enter a valid 10-digit phone number"
+            required
+          />
+        </div>
+        <br />
+        <div>
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="example@example.com"
+            required
+          />
+        </div>
+        <br />
+        <div>
+          <label for="pickupLocation">Pickup Location:</label>
+          <input
+            type="text"
+            id="pickupLocation"
+            name="pickupLocation"
+            placeholder="Enter pickup location"
+            required
+          />
+        </div>
+        <br />
+        <div>
+          <label for="dropoffLocation">Dropoff Location:</label>
+          <input
+            type="text"
+            id="dropoffLocation"
+            name="dropoffLocation"
+            placeholder="Enter dropoff location"
+            required
+          />
+        </div>
+        <br />
+        <div>
+          <label for="pickup-date">Pickup Date:</label>
+          <input
+            type="datetime-local"
+            id="pickup-date"
+            name="pickup-date"
+            required
+          />
+        </div>
+        <br />
+        <div>
+          <label for="dropoff-date">Dropoff Date:</label>
+          <input
+            type="datetime-local"
+            id="dropoff-date"
+            name="dropoff-date"
+            required
+          />
+        </div>
+        <br />
+        <div>
+          <label for="drivingLicense">Upload Driving License:</label>
+          <input
+            type="file"
+            id="drivingLicense"
+            name="drivingLicense"
+            accept="image/*"
+            required
+          />
+        </div>
+        <br />
+        <div>
+          <label for="yourAddress">Your Address:</label>
+          <input
+            type="text"
+            id="yourAddress"
+            name="yourAddress"
+            placeholder="Enter your address"
+          />
+        </div>
+        <br />
+        <button type="submit">Book Vehicle</button>
+      </form>
+    </div>
+
+    <script src="/js/rentNow.js"></script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+}
+.outerDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #f8c794;
+}
+.innerDiv {
+  background-color: #ffe0b5;
+  margin: 100px;
+  border-radius: 20px;
+  padding: 20px;
+}
+input {
+  background-color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px 10px 20px;
+  margin: 10px;
+}
+button {
+  background-color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px 10px 20px;
+  margin: 10px;
+}
+button:hover {
+  background-color: #ffe0b5;
+  border: 1px solid black;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Add New Car</title>
+    <link rel="stylesheet" href="css/adminPage.css" />
+  </head>
+  <body>
+    <div class="outerDiv">
+      <div class="innerDiv">
+        <h1>Add New Car</h1>
+        <form action="/add-car" method="POST">
+          <input type="text" name="make" placeholder="Make" required />
+          <input type="text" name="model" placeholder="Model" required />
+          <input type="number" name="year" placeholder="Year" required />
+          <input
+            type="text"
+            name="registrationNumber"
+            placeholder="Registration Number"
+            required
+          />
+          <input type="text" name="fuelType" placeholder="Fuel Type" required />
+          <input
+            type="number"
+            name="rentRange"
+            placeholder="Rent Range"
+            required
+          />
+          <input
+            type="text"
+            name="licenseNumber"
+            placeholder="License Number"
+            required
+          />
+          <input type="text" name="location" placeholder="Location" required />
+          <button type="submit">Add Car</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

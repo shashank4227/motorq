@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Edit Car</title>
+    <link rel="stylesheet" href="/css/editCar.css" />
+  </head>
+  <body>
+    <div class="outerDiv">
+      <div class="innerDiv">
+        <h1>Edit Car</h1>
+        <form action="/edit-car/<%= car._id %>" method="POST">
+          <input type="text" name="make" value="<%= car.make %>" required />
+          <input type="text" name="model" value="<%= car.model %>" required />
+          <input type="number" name="year" value="<%= car.year %>" required />
+          <input
+            type="text"
+            name="registrationNumber"
+            value="<%= car.registrationNumber %>"
+            required
+          />
+          <input
+            type="text"
+            name="fuelType"
+            value="<%= car.fuelType %>"
+            required
+          />
+          <input
+            type="number"
+            name="rentRange"
+            value="<%= car.rentRange %>"
+            required
+          />
+          <input
+            type="text"
+            name="licenseNumber"
+            value="<%= car.licenseNumber %>"
+            required
+          />
+          <input
+            type="text"
+            name="location"
+            value="<%= car.location %>"
+            required
+          />
+          <!-- <input type="text" name="customerId" value="<%= car.customerId %>" /> -->
+          <button type="submit">Update Car</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

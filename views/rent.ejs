@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Wheels - Rent Vehicles</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Link File CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" href="img/tab_logo.png" />
+    <link rel="stylesheet" href="css/rent.css" />
+    <link rel="stylesheet" href="css/search.css" />
+
+  </head>
+  <body>
+    <header style="background-color: black">
+      <nav>
+        <div class="logoMenu">
+          <div>
+            <a href="#" class="openbtn" onclick="openNav()">
+              <i class="fa-solid fa-bars"></i
+            ></a>
+          </div>
+        </div>
+
+        <div id="mySidebar" class="sidebar">
+          <!-- Button to close the sidebar -->
+          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+            >×</a
+          >
+          <!-- Links -->
+          <a href="/owned">Owned Vehicles</a>
+          <a href="/latestCars">Latest Releases</a>
+          <a href="futureCars">Future Releases</a>
+          <a href="/trendingCars">Trending Vehicles</a>
+          <a href="/rent">Rent Vehicles</a>
+          <a href="/faqs">FAQs</a>
+        </div>
+        <div class="menu">
+          <a href="/">Home</a>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
+          <a href="/reviews">Reviews</a>
+        </div>
+
+        <div class="social">
+          <a href="/search" class="tooltip"
+            ><i class="fa-solid fa-magnifying-glass"
+              ><span class="tooltiptext">Search</span></i
+            ></a
+          >
+          <a href="/notification" class="tooltip"
+            ><i class="fa-solid fa-bell"
+              ><span class="tooltiptext">Notifications</span></i
+            ></a
+          >
+          
+          <a href="/login" class="tooltip"
+            ><i class="fa-solid fa-user">
+              <span class="tooltiptext">Login</span>
+            </i></a
+          >
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="contentParent">
+        <div class="content">
+          <div>
+            <br><br>
+            <h1>Vehicle Rentals</h1>
+          </div>
+          <div class="searchAndFilters">
+            <form action="/findRent" method="GET"> 
+            <div class="filters">
+              <div>
+                <label for="make"></label>
+                <input
+                  type="text"
+                  id="make"
+                  name="make" 
+                  placeholder="Enter Make of Vehicle"
+                  aria-label="Search for vehicles"              />
+              </div>
+              <div>
+                <label for="model"></label>
+                <input type="text" id="model" placeholder="Enter model of the car" name="model">
+              </div> 
+              <div>
+                <label for="year"></label>
+                <input type="text" id="year" placeholder="Enter year of release" name="year">
+              </div>
+              
+              <div>
+                <label for="fuelType"></label>
+                <select name="fuelType" id="fuelType" class="filter">
+                  <option value="">Select Fuel Type</option>
+                  <option value="all">All Fuel Types</option>
+                  <option value="petrol">Petrol</option>
+                  <option value="diesel">Diesel</option>
+                  <option value="electric">Electric</option>
+                  <option value="hybrid">Hybrid</option>
+                </select>
+              </div>
+              <div>
+                <label for="rentRange"></label>
+                <input
+                  type="number"
+                  id="rentRange"
+                  name="rentRange"
+                  placeholder="Enter maximum rent range"
+                  min="0"
+                />
+              </div>              
+              <button type="submit">Search</button>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="results-container">
+        <div class="results" >
+          <p style="text-align: center;margin-top: 50px;">Apply filters to search vehicles</p>
+        </div>
+      </div>
+    </main>
+    <script src="js/script.js"></script>
+  </body>
+</html>
